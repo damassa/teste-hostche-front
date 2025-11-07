@@ -1,13 +1,11 @@
-body {
+:root {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  --main-font: "Inter", sans-serif;
+  --secondary-font: "Poppins", sans-serif;
 }
 
-.font-inter {
-  font-family: "Inter", sans-serif;
-}
-
-.font-poppins {
-  font-family: "Poppins", sans-serif;
+body {
+  font-family: var(--main-font);
 }

@@ -11,58 +11,87 @@
     />
     <link rel="stylesheet" href="/styles/global.css" />
 
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
   <body class="bg-white text-[#333]">
     <!-- Header -->
     <header class="bg-[#F36C21] text-white relative overflow-hidden">
       <nav
-        class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4"
+        id="navbar"
+        class="w-full sticky top-0 z-50 bg-[#F36C21] text-white transition-all duration-300"
       >
-        <!-- Logo -->
-        <div class="flex items-center gap-2">
-          <img src="/assets/imaps.png" alt="Logo iMaps" class="h-8" />
-        </div>
-
-        <!-- Menu Desktop -->
-        <ul class="hidden md:flex gap-8 font-semibold">
-          <li><a href="#sobre" class="hover:underline">Sobre</a></li>
-          <li><a href="#servicos" class="hover:underline">Serviços</a></li>
-          <li><a href="#clientes" class="hover:underline">Clientes</a></li>
-          <li><a href="#contato" class="hover:underline">Contato</a></li>
-        </ul>
-
-        <!-- Botão CTA -->
-        <a
-          href="#contato"
-          class="hidden md:inline-block bg-white text-[#F36C21] px-5 py-2 rounded font-semibold hover:bg-gray-100 transition"
+        <div
+          class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4"
         >
-          Entre em contato
-        </a>
+          <!-- Logo -->
+          <div class="flex items-center gap-2">
+            <a href="#">
+              <img src="/assets/imaps.png" alt="Logo iMaps" class="h-8" />
+            </a>
+          </div>
 
-        <!-- Botão Mobile -->
-        <button id="menuToggle" class="md:hidden focus:outline-none">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-7 w-7"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
+          <!-- Menu Desktop -->
+          <ul class="hidden md:flex gap-8 font-semibold">
+            <li><a href="#sobre" class="hover:underline">Sobre</a></li>
+            <li><a href="#servicos" class="hover:underline">Serviços</a></li>
+            <li><a href="#clientes" class="hover:underline">Clientes</a></li>
+            <li>
+              <a href="#contato" class="hover:underline">Seja um iMaper</a>
+            </li>
+          </ul>
+
+          <!-- Botão de baixar o Canvas -->
+          <a
+            href="https://page.imaps.com.br/data-driven-canvas?_gl=1*r3pqme*_ga*MjA3NzUwMDY5My4xNzYyNDQ5NjIz*_ga_G5FKYJRD98*czE3NjI1NDE3MDgkbzQkZzAkdDE3NjI1NDE3MDgkajYwJGwwJGgyMDY4NTIzMTk3"
+            class="hidden md:inline-flex items-center bg-white text-gray-600 px-5 py-2 rounded font-semibold hover:bg-gray-100 transition"
+            target="_blank"
           >
-            <path
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
+              class="w-5 h-5 mr-2"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Baixe o Canvas
+          </a>
+
+          <!-- Botão Mobile -->
+          <button id="menuToggle" class="md:hidden focus:outline-none">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"
+              />
+            </svg>
+          </button>
+        </div>
       </nav>
 
       <!-- Menu Mobile -->
       <div
         id="mobileMenu"
-        class="absolute top-16 left-0 w-full bg-[#F36C21] hidden flex-col items-center space-y-4 py-6 z-50 md:hidden"
+        class="absolute top-[72px] left-0 w-full bg-[#F36C21] hidden flex-col items-center space-y-4 py-6 z-40 md:hidden"
       >
         <a href="#sobre" class="text-white font-medium hover:underline"
           >Sobre</a
@@ -84,9 +113,7 @@
       >
         <!-- Texto -->
         <div class="max-w-lg text-center md:text-left">
-          <h1 class="text-4xl md:text-5xl font-bold font-poppins mb-4">
-            Seja Data Driven
-          </h1>
+          <h1 class="text-4xl md:text-5xl font-bold mb-4">Seja Data Driven</h1>
           <p class="text-base leading-relaxed mb-6">
             Solucione problemas de negócios com Data & Analytics.<br />
             Crie produtos de dados, IA, Data Science e Business Intelligence
@@ -94,7 +121,7 @@
           </p>
           <a
             href="#contato"
-            class="inline-block bg-white text-[#F36C21] px-6 py-3 rounded font-semibold hover:bg-gray-100 transition"
+            class="inline-block bg-white text-gray-700 px-6 py-3 rounded font-semibold hover:bg-gray-100 transition"
           >
             Entre em contato
           </a>
@@ -103,7 +130,7 @@
         <!-- Imagem Hero -->
         <div class="flex justify-center md:justify-end">
           <img
-            src="/assets/banner-image.png"
+            src="/assets/01.png"
             alt="Ilustração Data Driven"
             class="w-72 md:w-96 drop-shadow-lg animate-float"
           />
@@ -116,23 +143,23 @@
       <div
         class="max-w-6xl mx-auto flex justify-center items-center gap-10 flex-wrap opacity-80"
       >
-        <img src="cliente1.svg" class="h-8" alt="Cliente" />
-        <img src="cliente2.svg" class="h-8" alt="Cliente" />
-        <img src="cliente3.svg" class="h-8" alt="Cliente" />
+        <img src="assets/02.png" class="h-8" alt="Cliente" />
+        <img src="assets/04.png" class="h-8" alt="Cliente" />
+        <img src="assets/02.png" class="h-8" alt="Cliente" />
       </div>
     </section>
 
     <!-- Destaques -->
-    <section class="bg-[#F6F6F6] text-center py-16 text-2xl font-poppins">
-      <p>
+    <section class="bg-[#F6F6F6] text-center py-16 text-5xl">
+      <p class="font-semibold">
         <span class="text-[#F36C21] font-semibold">Desenhe</span> produtos de
         dados com Canvas
       </p>
-      <p>
+      <p class="font-semibold">
         <span class="text-[#F36C21] font-semibold">Desenvolva</span> soluções
         com Squads
       </p>
-      <p>
+      <p class="font-semibold">
         <span class="text-[#F36C21] font-semibold">Melhore</span> processos com
         Assessments
       </p>
@@ -143,7 +170,7 @@
       class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center"
     >
       <div>
-        <h2 class="text-3xl font-bold font-poppins mb-4 text-[#F36C21]">
+        <h2 class="text-3xl font-bold mb-4 text-[#F36C21]">
           Desenhe produtos de dados realmente valiosos
         </h2>
         <p class="mb-4">
@@ -156,21 +183,34 @@
           entregáveis de Data & Analytics.
         </p>
       </div>
-      <img src="canvas.png" alt="Canvas" class="rounded-lg shadow-lg" />
+      <img
+        src="assets/03.png"
+        alt="Canvas"
+        class="rounded-lg shadow-lg m-auto"
+      />
     </section>
 
     <!-- Squads / Serviços -->
     <section class="bg-[#F36C21] text-white py-20 text-center">
-      <h2 class="text-3xl font-bold font-poppins mb-4">
-        Reforce seu time e <span class="text-black">Desenvolva</span> Soluções
+      <h2 class="text-3xl mb-4">
+        Reforce seu time e
+        <span class="text-bold">Desenvolva</span> Soluções
       </h2>
       <p class="max-w-3xl mx-auto mb-10">
         Potencialize seus projetos com nossas squads de BI, AI e Engenharia de
         Dados.
       </p>
       <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6">
-        <img src="squad1.png" alt="Squad" class="rounded-lg shadow-lg" />
-        <img src="squad2.png" alt="Squad" class="rounded-lg shadow-lg" />
+        <img
+          src="assets/03.png"
+          alt="Squad"
+          class="rounded-lg shadow-lg mx-auto"
+        />
+        <img
+          src="assets/03.png"
+          alt="Squad"
+          class="rounded-lg shadow-lg mx-auto"
+        />
       </div>
     </section>
 
@@ -207,5 +247,6 @@
     <footer class="bg-[#111] text-gray-400 text-sm py-6 text-center">
       <p>© iMaps - Todos os direit</p>
     </footer>
+    <script src="js/main.js"></script>
   </body>
 </html>
