@@ -3,12 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>iMaps - Landing Page</title>
 
+    <title>iMaps | Início</title>
+
+    <link rel="icon" type="image/svg+xml" href="assets/icon.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@300;400;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
     <link rel="stylesheet" href="/styles/global.css" />
 
     <script
@@ -151,15 +158,15 @@
 
     <!-- Destaques -->
     <section class="bg-[#F6F6F6] text-center py-16 text-5xl">
-      <p class="font-semibold">
+      <p class="font-semibold mt-10">
         <span class="text-[#F36C21] font-semibold">Desenhe</span> produtos de
         dados com Canvas
       </p>
-      <p class="font-semibold">
+      <p class="font-semibold mt-10">
         <span class="text-[#F36C21] font-semibold">Desenvolva</span> soluções
         com Squads
       </p>
-      <p class="font-semibold">
+      <p class="font-semibold mt-10">
         <span class="text-[#F36C21] font-semibold">Melhore</span> processos com
         Assessments
       </p>
@@ -169,9 +176,10 @@
     <section
       class="py-20 max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center"
     >
-      <div>
-        <h2 class="text-3xl font-bold mb-4 text-[#F36C21]">
-          Desenhe produtos de dados realmente valiosos
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl font-bold mb-4">
+          <strong class="text-[#F36C21]">Desenhe</strong> produtos de dados
+          realmente valiosos
         </h2>
         <p class="mb-4">
           Data Driven Canvas, criado pela iMaps, é uma metodologia visual focada
@@ -183,11 +191,28 @@
           entregáveis de Data & Analytics.
         </p>
       </div>
-      <img
-        src="assets/03.png"
-        alt="Canvas"
-        class="rounded-lg shadow-lg m-auto"
-      />
+      <div class="relative shadow-lg overflow-hidden">
+        <img
+          src="assets/03.png"
+          alt="Squad"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="absolute top-0 left-0 bg-black/40 p-6 text-[#F6F6F6] w-full md:w-3/4"
+        >
+          <h2 class="text-3xl font-bold mb-2 text-left">Canvas</h2>
+          <p class="text-lg leading-snug text-left">
+            Data Driven Canvas, criado pela iMaps é uma metodologia visual
+            focada em objetivos de negócio.
+          </p>
+        </div>
+        <div
+          class="absolute bottom-4 left-4 bg-[#F36C21] flex items-center gap-2 px-6 py-3 rounded-md opacity-80"
+        >
+          <p class="text-[#F6F6F6] text-sm">Powered by</p>
+          <img src="assets/imaps.png" alt="Logo iMaps" class="h-5" />
+        </div>
+      </div>
     </section>
 
     <!-- Squads / Serviços -->
@@ -201,51 +226,109 @@
         Dados.
       </p>
       <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto px-6">
-        <img
-          src="assets/03.png"
-          alt="Squad"
-          class="rounded-lg shadow-lg mx-auto"
-        />
-        <img
-          src="assets/03.png"
-          alt="Squad"
-          class="rounded-lg shadow-lg mx-auto"
-        />
+        <div class="relative border-1 shadow-lg overflow-hidden">
+          <img
+            src="assets/03.png"
+            alt="Squad"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute top-0 left-0 bg-black/40 p-6 text-[#F6F6F6] w-full md:w-3/4"
+          >
+            <h2 class="text-3xl font-bold mb-2 text-left">Canvas</h2>
+            <p class="text-lg leading-snug text-left">
+              Data Driven Canvas, criado pela iMaps é uma metodologia visual
+              focada em objetivos de negócio.
+            </p>
+          </div>
+        </div>
+
+        <div class="relative border-1 shadow-lg overflow-hidden">
+          <img
+            src="assets/03.png"
+            alt="Squad"
+            class="w-full h-full object-cover"
+          />
+          <div
+            class="absolute top-0 left-0 bg-black/40 p-6 text-[#F6F6F6] w-full md:w-3/4"
+          >
+            <h2 class="text-3xl font-bold mb-2 text-left">Canvas</h2>
+            <p class="text-lg leading-snug text-left">
+              Data Driven Canvas, criado pela iMaps é uma metodologia visual
+              focada em objetivos de negócio.
+            </p>
+          </div>
+        </div>
       </div>
     </section>
 
     <!-- Contato -->
-    <section id="contato" class="bg-[#111] text-white py-20">
+    <section id="contato" class="bg-[#111] text-[#F6F6F6] py-20">
       <div
-        class="max-w-5xl mx-auto bg-white text-black p-10 rounded-lg shadow-lg"
+        class="max-w-6xl mx-auto bg-[#F6F6F6] text-gray-800 p-10 rounded-lg shadow-lg flex flex-col items-center"
       >
-        <h3 class="text-2xl font-poppins mb-6">Fale conosco</h3>
-        <form class="grid md:grid-cols-2 gap-6">
+        <h3 class="text-4xl mb-10 text-left">
+          <span class="font-bold">Fale</span> conosco
+        </h3>
+        <form class="grid md:grid-cols-2 gap-5 w-full max-w-2xl">
           <input
             type="text"
             placeholder="Seu nome"
-            class="border p-3 rounded"
+            class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           />
-          <input type="text" placeholder="Celular" class="border p-3 rounded" />
-          <input type="email" placeholder="E-mail" class="border p-3 rounded" />
-          <input type="text" placeholder="Assunto" class="border p-3 rounded" />
+          <input
+            type="text"
+            placeholder="Celular"
+            class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
+          />
+          <input
+            type="email"
+            placeholder="E-mail"
+            class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
+          />
+          <input
+            type="text"
+            placeholder="Assunto"
+            class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
+          />
           <textarea
             placeholder="Mensagem"
-            class="border p-3 rounded md:col-span-2 h-32"
+            class="border border-gray-300 p-3 rounded md:col-span-2 h-32 focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           ></textarea>
-          <button
-            type="submit"
-            class="bg-[#F36C21] text-white font-semibold px-6 py-3 rounded hover:bg-[#d85e1a] transition md:col-span-2"
-          >
-            Enviar
-          </button>
+          <div class="flex items-center justify-between md:col-span-2">
+            <div class="flex gap-4 text-[#333] text-xl">
+              <a href="#" class="hover:text-[#F36C21] transition">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+              <a href="#" class="hover:text-[#F36C21] transition">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a href="#" class="hover:text-[#F36C21] transition">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="#" class="hover:text-[#F36C21] transition">
+                <i class="fab fa-x-twitter"></i>
+              </a>
+            </div>
+
+            <button
+              class="bg-[#F36C21] text-[#F6F6F6] font-semibold px-8 py-3 rounded hover:bg-[#D85E1A] transition cursor-pointer"
+            >
+              Enviar
+            </button>
+          </div>
         </form>
       </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-[#111] text-gray-400 text-sm py-6 text-center">
-      <p>© iMaps - Todos os direit</p>
+    <footer class="w-full bg-[#F36C21] text-white">
+      <div class="max-w-7xl mx-auto flex items-center justify-between p-6 py-4">
+        <p>© iMaps - Todos os direitos reservados - 2024</p>
+        <a href="http://www.hostche.com.br" target="_blank">
+          <img src="assets/hostche.webp" alt="Logo Hostchê" class="w-15" />
+        </a>
+      </div>
     </footer>
     <script src="js/main.js"></script>
   </body>
