@@ -9,3 +9,10 @@
 body {
   font-family: var(--main-font);
 }
+
+.clients-carousel .slick-slide {
+  text-align: center;
+}
+.clients-carousel .slick-slide img {
+  margin: 0 auto; /
+}

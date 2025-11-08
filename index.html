@@ -6,7 +6,7 @@
 
     <title>iMaps | Início</title>
 
-    <link rel="icon" type="image/svg+xml" href="assets/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icon.png" />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Poppins:wght@300;400;700&display=swap"
       rel="stylesheet"
@@ -15,13 +15,34 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
     />
-
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+    />
     <link rel="stylesheet" href="/styles/global.css" />
 
     <script
       src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
       integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
       crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/localization/messages_pt_BR.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script
+      type="text/javascript"
+      src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
   </head>
@@ -147,26 +168,77 @@
 
     <!-- Clientes -->
     <section class="bg-white py-6 border-t border-gray-200">
-      <div
-        class="max-w-6xl mx-auto flex justify-center items-center gap-10 flex-wrap opacity-80"
-      >
-        <img src="assets/02.png" class="h-8" alt="Cliente" />
-        <img src="assets/04.png" class="h-8" alt="Cliente" />
-        <img src="assets/02.png" class="h-8" alt="Cliente" />
+      <div class="max-w-6xl mx-auto opacity-80 clients-carousel">
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/02.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/gfleury.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/3tentos.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/04.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/02.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/gfleury.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/3tentos.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
+        <div class="flex justify-center items-center h-full">
+          <img
+            src="assets/04.png"
+            class="h-8 grayscale w-auto max-w-full"
+            alt="Cliente"
+          />
+        </div>
       </div>
     </section>
 
     <!-- Destaques -->
-    <section class="bg-[#F6F6F6] text-center py-16 text-5xl">
-      <p class="font-semibold mt-10">
+    <section class="bg-gray-200 text-center py-16 text-5xl">
+      <p class="font-medium mt-10">
         <span class="text-[#F36C21] font-semibold">Desenhe</span> produtos de
         dados com Canvas
       </p>
-      <p class="font-semibold mt-10">
+      <p class="font-medium mt-10">
         <span class="text-[#F36C21] font-semibold">Desenvolva</span> soluções
         com Squads
       </p>
-      <p class="font-semibold mt-10">
+      <p class="font-medium mt-10">
         <span class="text-[#F36C21] font-semibold">Melhore</span> processos com
         Assessments
       </p>
@@ -270,28 +342,39 @@
         <h3 class="text-4xl mb-10 text-left">
           <span class="font-bold">Fale</span> conosco
         </h3>
-        <form class="grid md:grid-cols-2 gap-5 w-full max-w-2xl">
+        <form
+          id="form-contato"
+          class="grid md:grid-cols-2 gap-5 w-full max-w-2xl"
+        >
           <input
+            id="nome"
+            name="nome"
             type="text"
             placeholder="Seu nome"
             class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           />
           <input
+            id="celular"
             type="text"
             placeholder="Celular"
             class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           />
           <input
+            id="email"
             type="email"
             placeholder="E-mail"
             class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           />
           <input
+            id="assunto"
+            name="assunto"
             type="text"
             placeholder="Assunto"
             class="border border-gray-300 p-3 rounded focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           />
           <textarea
+            id="mensagem"
+            name="mensagem"
             placeholder="Mensagem"
             class="border border-gray-300 p-3 rounded md:col-span-2 h-32 focus:outline-none focus:ring-2 focus:ring-[#F36C21]"
           ></textarea>
