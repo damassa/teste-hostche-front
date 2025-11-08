@@ -82,7 +82,7 @@ $(document).ready(function () {
 
 //Formulário de Contato
 $(document).ready(function () {
-  // 1. Definição e Aplicação da Máscara (Sem Alterações)
+  //Máscara
   const SPMaskBehavior = (val) => {
       return val.replace(/\D/g, "").length === 11
         ? "(00) 00000-0000"
@@ -94,17 +94,21 @@ $(document).ready(function () {
       },
     };
 
-  // 2. Aplica a máscara no input #celular (para já aparecer)
+  //Aplica a máscara
   $("#celular").mask(SPMaskBehavior, spOptions);
 
-  $("#form-contato input, #form-contato textarea") // Seletor mais simples
-    .not('button, input[type="submit"]') // Exclui botões
+  $("#form-contato input, #form-contato textarea")
+    .not('button, input[type="submit"]')
     .each(function () {
-      // Usamos 'function()' para que 'this' aponte para o elemento DOM correto
       if (!$(this).parent().hasClass("input-container")) {
-        $(this).wrap(
-          '<div class="input-container flex flex-col w-full"></div>'
-        );
+        let containerClasses = "input-container flex flex-col w-full";
+
+        if ($(this).hasClass("md:col-span-2")) {
+          containerClasses += " md:col-span-2";
+        }
+
+        // Envolve o campo com o container, incluindo as classes de grid corretas
+        $(this).wrap('<div class="' + containerClasses + '"></div>');
       }
     });
 
@@ -135,7 +139,7 @@ $(document).ready(function () {
       // Código AJAX para o envio...
       $.ajax({
         type: "POST",
-        url: "/php/server.php",
+        url: "https://formsubmit.co/contatos@hostche.com.br",
         data: formData,
         dataType: "json",
         success: (response) => {
