@@ -59,7 +59,7 @@
         >
           <!-- Logo -->
           <div class="flex items-center gap-2">
-            <a href="#">
+            <a href="index.html">
               <img src="/assets/imaps.png" alt="Logo iMaps" class="h-8" />
             </a>
           </div>
@@ -98,10 +98,15 @@
           </a>
 
           <!-- Botão Mobile -->
-          <button id="menuToggle" class="md:hidden focus:outline-none">
+          <button
+            id="menuToggle"
+            class="md:hidden focus:outline-none"
+            aria-label="Menu"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-7 w-7"
+              class="h-7 w-7 transition-transform duration-300"
+              id="menu-icon"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -120,20 +125,30 @@
       <!-- Menu Mobile -->
       <div
         id="mobileMenu"
-        class="absolute top-[72px] left-0 w-full bg-[#F36C21] hidden flex-col items-center space-y-4 py-6 z-40 md:hidden"
+        class="fixed top-0 left-0 w-full h-screen bg-[#F36C21] hidden flex-col items-center py-6 z-40 md:hidden"
       >
-        <a href="#sobre" class="text-white font-medium hover:underline"
-          >Sobre</a
-        >
-        <a href="#servicos" class="text-white font-medium hover:underline"
-          >Serviços</a
-        >
-        <a href="#clientes" class="text-white font-medium hover:underline"
-          >Clientes</a
-        >
-        <a href="#contato" class="text-white font-medium hover:underline"
-          >Contato</a
-        >
+        <div class="pt-[72px] w-full">
+          <a
+            href="#sobre"
+            class="text-white font-bold text-lg w-full text-center py-3 block hover:bg-[#D85E1A] transition"
+            >Sobre</a
+          >
+          <a
+            href="#servicos"
+            class="text-white font-bold text-lg w-full text-center py-3 block hover:bg-[#D85E1A] transition"
+            >Serviços</a
+          >
+          <a
+            href="#clientes"
+            class="text-white font-bold text-lg w-full text-center py-3 block hover:bg-[#D85E1A] transition"
+            >Clientes</a
+          >
+          <a
+            href="#contato"
+            class="text-white font-bold text-lg w-full text-center py-3 block hover:bg-[#D85E1A] transition"
+            >Seja um iMaper</a
+          >
+        </div>
       </div>
 
       <!-- Conteúdo Principal -->
@@ -229,7 +244,7 @@
       </div>
     </section>
 
-    <!-- Destaques -->
+    <!-- Ações -->
     <section class="bg-gray-200 text-center py-16 text-5xl">
       <p class="font-medium mt-10">
         <span class="text-[#F36C21] font-semibold">Desenhe</span> produtos de
@@ -287,8 +302,8 @@
       </div>
     </section>
 
-    <!-- Squads / Serviços -->
-    <section class="bg-[#F36C21] text-white py-20 text-center">
+    <!-- Serviços -->
+    <section id="servicos" class="bg-[#F36C21] text-white py-20 text-center">
       <h2 class="text-3xl mb-4">
         Reforce seu time e
         <span class="text-bold">Desenvolva</span> Soluções

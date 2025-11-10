@@ -1,18 +1,42 @@
-// main.js
 $(document).ready(function () {
-  // === MENU MOBILE ===
-  $("#menuToggle").click(function () {
-    $("#mobileMenu").slideToggle(250);
+  //Menu mobile
+  const menuToggle = $("#menuToggle");
+  const mobileMenu = $("#mobileMenu");
+  const menuIcon = $("#menu-icon"); // O SVG que representa o ícone
+
+  const setCloseIcon = () => {
+    menuIcon.find("path").attr("d", "M6 18L18 6M6 6l12 12");
+    menuToggle.attr("aria-label", "Fechar Menu");
+  };
+
+  const setMenuIcon = () => {
+    menuIcon.find("path").attr("d", "M4 6h16M4 12h16M4 18h16");
+    menuToggle.attr("aria-label", "Menu");
+  };
+
+  menuToggle.click(function () {
+    mobileMenu.slideToggle(350, function () {
+      if (mobileMenu.is(":visible")) {
+        setCloseIcon();
+        menuToggle.addClass("menu-open");
+      } else {
+        setMenuIcon();
+        menuToggle.removeClass("menu-open");
+      }
+    });
   });
 
   $("#mobileMenu a").click(function () {
-    $("#mobileMenu").slideUp(200);
+    mobileMenu.slideUp(300, function () {
+      setMenuIcon();
+      menuToggle.removeClass("menu-open");
+    });
   });
 
-  // === STICKY NAVBAR (muda visual ao rolar) ===
+  //Navbar sticky
   const navbar = $("#navbar");
   const defaultBg = "#F36C21";
-  const scrolledBg = "#e55f1e"; // tom levemente mais escuro ao rolar
+  const scrolledBg = "#e55f1e";
 
   $(window).on("scroll", function () {
     if ($(this).scrollTop() > 50) {
@@ -26,17 +50,16 @@ $(document).ready(function () {
     }
   });
 
-  // === SCROLL SUAVE ===
   $('a[href^="#"]').on("click", function (event) {
     const target = $(this.getAttribute("href"));
     if (target.length) {
       event.preventDefault();
       $("html, body").animate(
         {
-          scrollTop: target.offset().top - 80, // ajusta para a altura do header
+          scrollTop: target.offset().top - 80,
         },
         600
-      ); // duração em ms
+      );
     }
   });
 });
@@ -44,33 +67,33 @@ $(document).ready(function () {
 //Carrossel
 $(document).ready(function () {
   $(".clients-carousel").slick({
-    slidesToShow: 6, // Quantidade de logos visíveis em telas grandes
-    slidesToScroll: 1, // Quantos logos rolam de cada vez
-    autoplay: true, // Rola automático
-    autoplaySpeed: 2000, // Velocidade da rolagem (2 segundos)
-    arrows: false, // Remove as setas de navegação
-    dots: false, // Remove os pontos de navegação
-    infinite: true, // Permite rolagem infinita (loop)
-    pauseOnHover: false, // Continua rolando mesmo com o mouse em cima
-    speed: 1000, // Velocidade da transição
-    // Configurações Responsivas
+    slidesToShow: 6, //Slides para serem mostrados no desktop
+    slidesToScroll: 1, //Slides para serem scrollados
+    autoplay: true, //Play automático
+    autoplaySpeed: 2000, //Velocidade do autoplay
+    arrows: false, //Sem flechinhas
+    dots: false, //Sem bolinhas (pontos)
+    infinite: true, //Roda infinito
+    pauseOnHover: false, //Tira a pausa quando passa o mouse
+    speed: 1000, //Velocidade da transição
+    //Configurações Responsivas
     responsive: [
       {
-        breakpoint: 1024, // Em telas de tablet (1024px)
+        breakpoint: 1024, //Em telas de tablet (width:1024px)
         settings: {
           slidesToShow: 4,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 600, // Em telas de celular grande (600px)
+        breakpoint: 600, // Em telas de celular grande (width:600px)
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480, // Em telas de celular pequeno (480px)
+        breakpoint: 480, // Em telas de celular pequeno (width:480px)
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
@@ -107,14 +130,14 @@ $(document).ready(function () {
           containerClasses += " md:col-span-2";
         }
 
-        // Envolve o campo com o container, incluindo as classes de grid corretas
+        //Envolve o campo com o container, incluindo as classes de grid corretas
         $(this).wrap('<div class="' + containerClasses + '"></div>');
       }
     });
 
-  // 4. Validação
+  //Validação
   $("#form-contato").validate({
-    // Regras de Validação (Corretas)
+    //Regras de Validação
     rules: {
       nome: { required: true, minlength: 3 },
       celular: { required: true, minlength: 14 },
@@ -126,23 +149,24 @@ $(document).ready(function () {
     errorElement: "div",
     errorPlacement: (error, element) => {
       error.addClass("text-red-600 text-sm mt-1");
-      error.appendTo(element.parent()); // Injeta o erro no 'input-container'
+      error.appendTo(element.parent()); //Injeta o erro no 'input-container'
     },
 
-    // submitHandler no nível principal
+    //submitHandler no nível principal
     submitHandler: (form) => {
       const submitButton = $(form).find('button[type="submit"]');
       submitButton.prop("disabled", true).text("Enviando...");
 
       const formData = $(form).serialize();
 
-      // Código AJAX para o envio...
+      //AJAX para o envio...
       $.ajax({
         type: "POST",
-        url: "https://formsubmit.co/contatos@hostche.com.br",
+        url: "https://formsubmit.co/contatos@hostche.com.br", //Domínio externo para mostrar o resultado do envio funcionando sem criar PHPMailer
         data: formData,
         dataType: "json",
         success: (response) => {
+          //Dados ok
           if (response.success) {
             Swal.fire({
               icon: "success",
@@ -150,16 +174,17 @@ $(document).ready(function () {
               showConfirmButton: false,
               timer: 1500,
             });
-            form.reset(); // Limpa o formulário após o sucesso
+            form.reset(); //Limpa o formulário após o sucesso
           } else {
             Swal.fire({
               icon: "error",
               title: "Erro ao enviar a mensagem",
-              text: response.message,
+              text: response.message, //Mensagem do erro
             });
           }
         },
         error: () => {
+          //Erro em alguma parte
           Swal.fire({
             icon: "error",
             title: "Erro ao enviar a mensagem",
@@ -167,6 +192,7 @@ $(document).ready(function () {
           });
         },
         complete: () => {
+          //Depois que enviou, deixa o botão inativo
           submitButton.prop("disabled", false).text("Enviar");
         },
       });
